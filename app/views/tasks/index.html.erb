@@ -1,0 +1,19 @@
+<h1>My tasks</h1>
+
+  <ul class='list-group list-group-flush'>
+  <% @tasks.each do |task| %>
+    <li class='list-group-item text-body'>
+      <% if task.completed %>
+        <i class="far fa-check-square"></i>
+      <% else %>
+        <i class="far fa-square"></i></i>
+      <% end %>
+    <%= link_to task.title, task_path(task) %> (<%= link_to "Update", edit_task_path(task) %>)
+    <%= link_to task_path(task), method: :delete do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "New Task", new_task_path %></p>
